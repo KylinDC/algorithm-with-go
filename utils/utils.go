@@ -13,7 +13,7 @@ func ToSorted[S ~[]E, E cmp.Ordered](x S) (newX S) {
 	return
 }
 
-func DeepCopy[S ~[]E, E cmp.Ordered](x S) (newX S) {
+func CopySlice[S ~[]E, E cmp.Ordered](x S) (newX S) {
 	newX = make(S, len(x))
 	copy(newX, x)
 	return

@@ -6,7 +6,7 @@ import (
 )
 
 func SelectionSorting[S ~[]E, E cmp.Ordered](x S) (newX S) {
-	newX = utils.DeepCopy(x)
+	newX = utils.CopySlice(x)
 
 	for i := range newX {
 		minI := i
