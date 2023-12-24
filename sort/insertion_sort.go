@@ -10,8 +10,8 @@ func InsertionSort[S ~[]E, E cmp.Ordered](x S) (newX S) {
 
 	for i := range newX {
 		for j := i; j > 0; j-- {
-			if newX[j] < newX[j-1] {
-				utils.Swap(newX, j, j-1)
+			if cmp.Less(newX[j], newX[j-1]) {
+				Swap(newX, j, j-1)
 			} else {
 				break
 			}
@@ -32,8 +32,8 @@ func ShellSort[S ~[]E, E cmp.Ordered](x S) (newX S) {
 	for h >= 1 {
 		for i := h; i < len(newX); i++ {
 			for j := i; j >= h; j -= h {
-				if newX[j] < newX[j-h] {
-					utils.Swap(newX, j, j-h)
+				if cmp.Less(newX[j], newX[j-h]) {
+					Swap(newX, j, j-h)
 				} else {
 					break
 				}

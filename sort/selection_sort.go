@@ -11,11 +11,11 @@ func SelectionSorting[S ~[]E, E cmp.Ordered](x S) (newX S) {
 	for i := range newX {
 		minI := i
 		for j := i; j < len(x); j++ {
-			if newX[minI] > newX[j] {
+			if cmp.Less(newX[j], newX[minI]) {
 				minI = j
 			}
 		}
-		utils.Swap(newX, i, minI)
+		Swap(newX, i, minI)
 	}
 
 	return
