@@ -20,3 +20,28 @@ func InsertionSort[S ~[]E, E cmp.Ordered](x S) (newX S) {
 
 	return
 }
+
+func ShellSort[S ~[]E, E cmp.Ordered](x S) (newX S) {
+	newX = utils.CopySlice(x)
+
+	h := 1
+	for h < len(newX)/3 {
+		h = h*3 + 1
+	}
+
+	for h >= 1 {
+		for i := h; i < len(newX); i++ {
+			for j := i; j >= h; j -= h {
+				if newX[j] < newX[j-h] {
+					utils.Swap(newX, j, j-h)
+				} else {
+					break
+				}
+			}
+		}
+
+		h = h / 3
+	}
+
+	return
+}
